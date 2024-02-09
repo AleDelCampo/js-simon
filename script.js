@@ -2,9 +2,12 @@ const startButton = document.getElementById("startCountdown");
 
 startButton.addEventListener("click", function() {
     countdown();
+    const cnt = document.getElementById("container");
+    cnt.classList.remove("bg")
+    cnt.classList.add("scare");
 });
 
-function calcMyTime() {
+function calcMyTime() { 
     let actualHour = new Date();
 
     let wantedHour = new Date();
@@ -26,7 +29,7 @@ function countdown() {
     let minutesToWait = Math.floor((timeToWait % (1000 * 60 * 60)) / (1000 * 60));
     let secondsToWait = Math.floor((timeToWait % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown").innerHTML = hoursToWait + "h " + minutesToWait + "m " + secondsToWait + "s ";
+    document.getElementById("countdown").innerHTML = `${hoursToWait}h  ${minutesToWait}m  ${secondsToWait}s`;
   
     setTimeout(countdown, 1000);
 }   
