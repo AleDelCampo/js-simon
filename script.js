@@ -1,18 +1,8 @@
-/*Sfruttiamo le timing functions per fare il conto alla
-rovescia per la correzione di domani!
-Ogni secondo il nostro countdown dovrà scalare fino alle
-9:30 di lunedì mattina!
-Consigli
-Questo esercizio richiede un po' di ricerca ma anche un po'
-di domande che accompagnano l'uomo da tempo immemore:
+const startButton = document.getElementById("startCountdown");
 
-Da quante ore è composto un giorno?
-Da quanti minuti è composta un'ora?
-Da quanti secondi è composto un minuto?
-Da quanti millisecondi è composto un secondo?
-Quanti millisecondi mi separano da domani alle 9:30?
-Esiste un oggetto JS in grado di gestire le date?
-Esistono dei metodi per trasformare una data in millisecondi?*/
+startButton.addEventListener("click", function() {
+    countdown();
+});
 
 function calcMyTime() {
     let actualHour = new Date();
@@ -27,6 +17,16 @@ function calcMyTime() {
     let timeDiff = wantedHour - actualHour;
 
     return timeDiff;
-    
 };
-console.log(calcMyTime());
+
+function countdown() {
+    let timeToWait = calcMyTime();
+
+    let hoursToWait = Math.floor(timeToWait / (1000 * 60 * 60));
+    let minutesToWait = Math.floor((timeToWait % (1000 * 60 * 60)) / (1000 * 60));
+    let secondsToWait = Math.floor((timeToWait % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = hoursToWait + "h " + minutesToWait + "m " + secondsToWait + "s ";
+  
+    setTimeout(countdown, 1000);
+}   
