@@ -28,8 +28,9 @@
 
 #countdown {
     position: absolute; 
-    bottom: 134px;
+    bottom: 320px;
     margin-left: 20px;
+    font-size: 2em;
     color: red;
 }
 
